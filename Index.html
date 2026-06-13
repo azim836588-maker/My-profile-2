@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title id="page-title">Azim Ahmed</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Bengali:wght@300;400;600&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--bg:#f0f0ea;--surface:#fff;--border:#e4e4de;--text:#0f0f0f;--muted:#999990}
+    body{
+      background:var(--bg);
+      color:var(--text);
+      font-family:"Plus Jakarta Sans",sans-serif;
+      min-height:100vh;
+      overflow-x:hidden;
+      transition:background 0.5s ease;
+      background-size:cover;
+      background-position:center;
+      background-attachment:fixed;
+    }
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      background-image:radial-gradient(circle,#bbbbb3 1px,transparent 1px);
+      background-size:26px 26px;
+      opacity:.3;
+      pointer-events:none;
+      z-index:0;
+    }
+    .container{
+      position:relative;
+      z-index:1;
+      max-width:450px;
+      margin:0 auto;
+      padding:40px 16px 80px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:14px;
+    }
+    .profile-card{
+      width:100%;
+      background:rgba(255,255,255,0.85);
+      backdrop-filter:blur(10px);
+      border-radius:32px;
+      border:1px solid rgba(255,255,255,0.3);
+      box-shadow:0 2px 16px rgba(0,0,0,0.07);
+      overflow:hidden;
+      animation:up .7s ease both .05s;
+    }
+    .cover{
+      width:100%;
+      height:100px;
+      background:linear-gradient(120deg,#a8edea 0%,#fed6e3 30%,#ffecd2 60%,#c2e9fb 80%,#d4fc79 100%);
+      background-size:300% 300%;
+      animation:grad 7s ease infinite;
+    }
+    @keyframes grad{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+    .avatar-area{display:flex;flex-direction:column;align-items:center;margin-top:-56px;padding:0 24px 30px;text-align:center}
+    .avatar-wrap{width:112px;height:112px;border-radius:50%;padding:3px;background:conic-gradient(#ff6b6b,#ffd93d,#6bcb77,#4d96ff,#c77dff,#ff6b6b);flex-shrink:0}
+    .avatar-inner{width:100%;height:100%;border-radius:50%;overflow:hidden;border:4px solid #fff;background:#eee}
+    .avatar-inner img{width:100%;height:100%;object-fit:cover;object-position:center 5%;display:block}
+    .profile-name{font-size:27px;font-weight:800;color:var(--text);letter-spacing:-.5px;margin:14px 0 5px}
+    .profile-sub{font-size:12px;color:var(--muted);font-family:"Noto Sans Bengali",sans-serif}
+    .divider{width:36px;height:3px;background:linear-gradient(90deg,#ff6b6b,#4d96ff,#c77dff);border-radius:4px;margin:16px auto 0}
+    .section-label{font-size:9.5px;letter-spacing:3.5px;text-transform:uppercase;color:var(--muted);animation:up .6s ease both .15s}
+    .links-grid{width:100%;display:grid;grid-template-columns:1fr 1fr;gap:9px;animation:up .7s ease both .2s}
+    .lc{display:flex;align-items:center;gap:11px;padding:13px 14px;background:rgba(255,255,255,0.7);backdrop-filter:blur(5px);border-radius:19px;border:1px solid rgba(255,255,255,0.2);text-decoration:none;color:var(--text);box-shadow:0 1px 5px rgba(0,0,0,.05);transition:transform .17s,box-shadow .17s,border-color .17s;-webkit-tap-highlight-color:transparent}
+    .lc:hover{transform:translateY(-3px);box-shadow:0 9px 26px rgba(0,0,0,.10);border-color:var(--ac)}
+    .lc:active{transform:scale(.97)}
+    .lc.full{grid-column:span 2}
+    .lc.hidden{display:none}
+    .lc.yt{--ac:#ff0000}.lc.fb{--ac:#1877f2}.lc.tt{--ac:#010101}.lc.wa{--ac:#25d366}.lc.imo{--ac:#00c6ff}.lc.tg{--ac:#229ed9}.lc.call{--ac:#34c759}.lc.em{--ac:#ea4335}
+    .li{width:44px;height:44px;border-radius:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .lc.yt .li{background:#fff0f0}.lc.fb .li{background:#f0f4ff}.lc.tt .li{background:#f4f4f4}.lc.wa .li{background:#f0faf3}.lc.imo .li{background:#e8f9ff}.lc.tg .li{background:#eaf6fd}.lc.call .li{background:#f0faf3}.lc.em .li{background:#fff2f0}
+    .ln-wrap{display:flex;flex-direction:column;min-width:0;flex:1}
+    .ln{font-size:13px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .ls{font-size:10px;color:var(--muted);margin-top:2px;font-family:"Noto Sans Bengali",sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .la{font-size:17px;color:var(--muted);flex-shrink:0;transition:transform .17s,color .17s}
+    .lc:hover .la{transform:translateX(3px);color:var(--ac)}
+    .footer{font-size:11px;color:var(--muted);animation:up .7s ease both .4s}
+    .footer b{color:var(--text)}
+    @keyframes up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+    @media(max-width:360px){.links-grid{grid-template-columns:1fr}.lc.full{grid-column:span 1}.profile-name{font-size:22px}}
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="profile-card">
+    <div class="cover" id="cover-bg"></div>
+    <div class="avatar-area">
+      <div class="avatar-wrap">
+        <div class="avatar-inner">
+          <img id="profile-photo" src="https://ui-avatars.com/api/?background=6c63ff&color=fff&name=Azim" alt="Azim Ahmed"/>
+        </div>
+      </div>
+      <div class="profile-name" id="display-name">Azim Ahmed</div>
+      <div class="profile-sub" id="display-bio">আমার সাথে যোগাযোগ করুন</div>
+      <div class="divider"></div>
+    </div>
+  </div>
+
+  <div class="section-label">— আমার লিংকসমূহ —</div>
+
+  <div class="links-grid">
+    <!-- YouTube -->
+    <a class="lc yt" id="card-yt" href="#" target="_blank" rel="noopener noreferrer" data-track="yt">
+      <div class="li"><svg width="26" height="26" viewBox="0 0 24 24"><path d="M23.5 6.2s-.3-2-1.2-2.8c-1.1-1.2-2.4-1.2-3-1.3C16.6 2 12 2 12 2s-4.6 0-7.3.2c-.6.1-1.9.1-3 1.3C.8 4.2.5 6.2.5 6.2S.2 8.5.2 10.8v2.1c0 2.3.3 4.6.3 4.6s.3 2 1.2 2.8c1.1 1.2 2.6 1.1 3.3 1.2C7 21.7 12 21.8 12 21.8s4.6 0 7.3-.3c.6-.1 1.9-.1 3-1.3.9-.8 1.2-2.8 1.2-2.8s.3-2.3.3-4.6v-2.1C23.8 8.5 23.5 6.2 23.5 6.2z" fill="#FF0000"/><path d="M9.7 15.5V8.5l6.6 3.5z" fill="white"/></svg></div>
+      <div class="ln-wrap"><span class="ln">YouTube</span><span class="ls" id="sub-yt">চ্যানেল দেখুন</span></div>
+      <span class="la">›</span>
+    </a>
+
+    <!-- Facebook -->
+    <a class="lc fb" id="card-fb" href="#" target="_blank" rel="noopener noreferrer" data-track="fb">
+      <div class="li"><svg width="26" height="26" viewBox="0 0 24 24"><path d="M24 12C24 5.37 18.63 0 12 0S0 5.37 0 12c0 5.99 4.39 10.96 10.12 11.85V15.47H7.08V12h3.04v-2.6c0-3 1.79-4.66 4.53-4.66 1.31 0 2.69.23 2.69.23v2.95h-1.51c-1.49 0-1.96.93-1.96 1.88V12h3.33l-.53 3.47h-2.8v8.38C19.61 22.96 24 17.99 24 12z" fill="#1877F2"/><path d="M16.67 15.47L17.2 12h-3.33v-2.2c0-.95.47-1.88 1.96-1.88h1.51V4.97s-1.38-.23-2.69-.23c-2.74 0-4.53 1.66-4.53 4.66V12H7.08v3.47h3.04v8.38a12.1 12.1 0 003.76 0v-8.38h2.79z" fill="white"/></svg></div>
+      <div class="ln-wrap"><span class="ln">Facebook</span><span class="ls" id="sub-fb">ফলো করুন</span></div>
+      <span class="la">›</span>
+    </a>
+
+    <!-- TikTok -->
+    <a class="lc tt" id="card-tt" href="#" target="_blank" rel="noopener noreferrer" data-track="tt">
+      <div class="li"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 105.53 6.29V8.95a8.16 8.16 0 004.77 1.52V7.02a4.85 4.85 0 01-1-.33z" fill="#010101"/><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 105.53 6.29V8.95a8.16 8.16 0 004.77 1.52V7.02a4.85 4.85 0 01-1-.33z" fill="#69C9D0" opacity="0.5"/></svg></div>
+      <div class="ln-wrap"><span class="ln">TikTok</span><span class="ls" id="sub-tt">ভিডিও দেখুন</span></div>
+      <span class="la">›</span>
+    </a>
+
+    <!-- WhatsApp -->
+    <a class="lc wa" id="card-wa" href="#" target="_blank" rel="noopener noreferrer" data-track="wa">
+      <div class="li"><svg width="26" height="26" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.38 5.07L2 22l5.12-1.34A9.93 9.93 0 0012 22c5.52 0 10-4.48 10-10S17.52 2 12 2z" fill="#25D366"/><path d="M17.47 14.38c-.28-.14-1.64-.81-1.9-.9-.26-.1-.44-.14-.63.14-.19.28-.72.9-.88 1.08-.16.18-.32.2-.6.07-.28-.14-1.18-.44-2.25-1.4-.83-.74-1.39-1.66-1.55-1.94-.16-.28-.02-.43.12-.57.12-.12.28-.32.42-.48.14-.16.19-.28.28-.46.09-.19.05-.35-.02-.48-.07-.14-.63-1.52-.86-2.08-.22-.54-.45-.47-.63-.47-.16 0-.35-.02-.54-.02-.19 0-.49.07-.74.35-.25.28-.98.96-.98 2.33 0 1.37.99 2.7 1.13 2.89.14.19 1.96 2.99 4.74 4.2.66.28 1.18.45 1.58.58.66.21 1.26.18 1.74.11.53-.08 1.64-.67 1.87-1.32.23-.65.23-1.2.16-1.32-.07-.12-.25-.19-.53-.33z" fill="white"/></svg></div>
+      <div class="ln-wrap"><span class="ln">WhatsApp</span><span class="ls" id="sub-wa">মেসেজ করুন</span></div>
+      <span class="la">›</span>
+    </a>
+
+    <!-- IMO -->
+    <a class="lc imo" id="card-imo" href="tel:+8801778383658" data-track="imo">
+      <div class="li"><svg width="40" height="40" viewBox="0 0 200 200"><defs><linearGradient id="ig" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#00C6FF"/><stop offset="100%" stop-color="#0072FF"/></linearGradient></defs><rect width="200" height="200" rx="50" fill="url(#ig)"/><path d="M100 40C65 40 38 64 38 95c0 17 8.5 32 22 42v23l22-12a59 59 0 0018 3c35 0 62-24 62-56S135 40 100 40z" fill="white" opacity=".95"/><circle cx="72" cy="95" r="10" fill="url(#ig)"/><circle cx="100" cy="95" r="10" fill="url(#ig)"/><circle cx="128" cy="95" r="10" fill="url(#ig)"/></svg></div>
+      <div class="ln-wrap"><span class="ln">IMO</span><span class="ls" id="sub-imo">01778383658</span></div>
+      <span class="la">›</span>
+    </a>
+
+    <!-- Telegram -->
+    <a class="lc tg" id="card-tg" href="#" target="_blank" rel="noopener noreferrer" data-track="tg">
+      <div class="li"><svg width="26" height="26" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#229ED9"/><path d="M5.5 11.5l11-4.5c.5-.2.9.1.75.8l-1.88 8.8c-.13.6-.5.75-.99.47l-2.75-2.03-1.32 1.27c-.15.15-.27.27-.55.27l.2-2.82 5.1-4.6c.22-.2-.05-.3-.34-.1L7.38 13.5l-2.73-.85c-.59-.18-.6-.59.85-1.15z" fill="white"/></svg></div>
+      <div class="ln-wrap"><span class="ln">Telegram</span><span class="ls" id="sub-tg">মেসেজ করুন</span></div>
+      <span class="la">›</span>
+    </a>
+
+    <!-- Phone Call -->
+    <a class="lc call full" id="card-call" href="tel:+8801778383658" data-track="call">
+      <div class="li"><svg width="26" height="26" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#34C759"/><path d="M16.8 14.4l-1.9-.22a1.5 1.5 0 00-1.23.43l-1.38 1.38a11.35 11.35 0 01-4.97-4.97l1.4-1.4a1.5 1.5 0 00.42-1.23l-.22-1.88A1.5 1.5 0 007.43 5H6a1.5 1.5 0 00-1.5 1.63 14.35 14.35 0 0012.87 12.87A1.5 1.5 0 0019 18v-1.43a1.5 1.5 0 00-2.2-1.17z" fill="white"/></svg></div>
+      <div class="ln-wrap"><span class="ln">Phone Call</span><span class="ls" id="sub-call">01778383658 — সরাসরি কল করুন</span></div>
+      <span class="la">›</span>
+    </a>
+
+    <!-- Email -->
+    <a class="lc em full" id="card-em" href="mailto:azimahmed@gmail.com" data-track="em">
+      <div class="li"><svg width="32" height="24" viewBox="0 0 32 24" fill="none"><rect width="32" height="24" rx="3" fill="#fff"/><path d="M0 2a2 2 0 012-2h28a2 2 0 012 2v1.5L16 14 0 3.5V2z" fill="#FBBC04"/><path d="M0 3.5V22h4V8.5L16 16l12-7.5V22h4V3.5L16 14 0 3.5z" fill="#EA4335"/><path d="M0 3.5V22h4V8.5" fill="#34A853"/><path d="M28 8.5V22h4V3.5" fill="#4285F4"/></svg></div>
+      <div class="ln-wrap"><span class="ln">Email</span><span class="ls" id="sub-em">azimahmed@gmail.com</span></div>
+      <span class="la">›</span>
+    </a>
+  </div>
+
+  <div class="footer">Made with ❤️ for <b id="footer-name">Azim Ahmed</b></div>
+</div>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+  import { getDatabase, ref, update, increment, onValue } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+
+  // আপনার দেওয়া কনফিগারেশন
+  const firebaseConfig = {
+    apiKey: "AIzaSyDMGrSEF45JjepkrhQV1kfO17q9zLmuFMg",
+    authDomain: "azim232.firebaseapp.com",
+    databaseURL: "https://azim232-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "azim232",
+    storageBucket: "azim232.firebasestorage.app",
+    messagingSenderId: "125749353643",
+    appId: "1:125749353643:web:98f681367bb31403ac2bee",
+    measurementId: "G-T99JE14NM1"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getDatabase(app);
+
+  // ১. Firebase থেকে রিয়েল-টাইম ডেটা লোড
+  onValue(ref(db, 'settings'), (snapshot) => {
+    const settings = snapshot.val() || {};
+
+    // ব্যাকগ্রাউন্ড থিম লাইভ পরিবর্তন
+    if(settings.bg) {
+      document.body.style.background = settings.bg;
+      document.body.style.backgroundSize = 'cover';
+      document.body.style.backgroundPosition = 'center';
+      document.body.style.backgroundAttachment = 'fixed';
+      
+      const cards = document.querySelectorAll('.profile-card, .lc');
+      cards.forEach(card => {
+        card.style.background = 'rgba(255,255,255,0.8)';
+        card.style.backdropFilter = 'blur(8px)';
+      });
+    } else {
+      document.body.style.background = 'var(--bg)';
+      const cards = document.querySelectorAll('.profile-card, .lc');
+      cards.forEach(card => {
+        card.style.background = '';
+        card.style.backdropFilter = '';
+      });
+    }
+
+    // প্রোফাইল তথ্য লাইভ আপডেট
+    document.getElementById('display-name').textContent = settings.name || 'Azim Ahmed';
+    document.getElementById('footer-name').textContent = settings.name || 'Azim Ahmed';
+    document.getElementById('page-title').textContent = settings.name || 'Azim Ahmed';
+    document.getElementById('display-bio').textContent = settings.bio || 'আমার সাথে যোগাযোগ করুন';
+    
+    if (settings.photo) {
+      document.getElementById('profile-photo').src = settings.photo;
+    } else {
+      document.getElementById('profile-photo').src = 'https://ui-avatars.com/api/?background=6c63ff&color=fff&name=Azim';
+    }
+
+    // লিংক সমূহ ও ভিজিবিলিটি লাইভ আপডেট
+    const links = ['yt','fb','tt','wa','imo','tg','call','em'];
+    links.forEach(k => {
+      const card = document.getElementById('card-'+k);
+      const sub  = document.getElementById('sub-'+k);
+      if (!card) return;
+      if (settings['url_'+k]) card.href = settings['url_'+k];
+      if (settings['label_'+k]) sub.textContent = settings['label_'+k];
+      if (settings['hide_'+k]) {
+        card.classList.add('hidden');
+      } else {
+        card.classList.remove('hidden');
+      }
+    });
+  });
+
+  // ২. ভিজিটর সংখ্যা ১ বৃদ্ধি করা (ডাটাবেজে)
+  update(ref(db, 'tracking'), {
+    visitors: increment(1)
+  });
+
+  // ৩. সোশ্যাল লিংকে ক্লিকের সংখ্যা ডাটাবেজে ট্র্যাক করা
+  document.addEventListener('click', function(e){
+    const link = e.target.closest('a[data-track]');
+    if(link){
+      const key = link.getAttribute('data-track');
+      const updates = {};
+      updates['clicks/' + key] = increment(1);
+      update(ref(db, 'tracking'), updates);
+    }
+  });
+</script>
+</body>
+</html>
